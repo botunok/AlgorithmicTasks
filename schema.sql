@@ -59,3 +59,17 @@ create table Office(
       CONSTRAINT id_pk PRIMARY KEY (id),
       CONSTRAINT fk_id_organization FOREIGN KEY (id_organization) REFERENCES Organization(id)
 );
+
+CREATE INDEX indx_Document_code ON Document (code) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_document_id ON User_document (id) TABLESPACE emp_index_01;
+CREATE INDEX indx_Country_code ON Country (code) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_id ON User (id) TABLESPACE emp_index_01;
+CREATE INDEX indx_Organization_id ON Organization (id) TABLESPACE emp_index_01;
+CREATE INDEX indx_Office_id ON Office (id) TABLESPACE emp_index_01;
+
+CREATE INDEX indx_Organization_id_head_office ON Organization (id_head_office) TABLESPACE emp_index_01;
+CREATE INDEX indx_Office_id_organization ON Office (id_organization) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_office_id ON User (office_id) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_id_user_document ON User (id_user_document) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_citizenship_code ON User (citizenship_code) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_document_doc_code ON User_document (doc_code) TABLESPACE emp_index_01;
