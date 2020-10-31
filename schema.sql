@@ -7,6 +7,9 @@ create table Document(
 create table User_document(
     id number (15),
     doc_code number (15) NOT NULL,
+    first_name varchar2 (50) NOT NULL,
+    second_name varchar2 (50),
+    middle_name varchar2 (50),
     doc_number varchar2 (50) NOT NULL,
     doc_date date,
     CONSTRAINT pk_id PRIMARY KEY (id),
@@ -21,10 +24,7 @@ create table Country(
 
 create table User(
     id number (15),
-    first_name varchar2 (50) NOT NULL,
     office_id number (15) NOT NULL,
-    second_name varchar2 (50),
-    middle_name varchar2 (50),
     position varchar2 (50) NOT NULL,
     phone number (15), 
     id_user_document number (15),
@@ -79,8 +79,8 @@ CREATE INDEX indx_Organization_name ON Organization (name) TABLESPACE emp_index_
 CREATE INDEX indx_Organization_inn ON Organization (inn) TABLESPACE emp_index_01;
 CREATE INDEX indx_Office_name ON Office (name) TABLESPACE emp_index_01;
 CREATE INDEX indx_Office_phone ON Office (phone) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_first_name ON User (first_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_second_name ON User (second_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_middle_name ON User (middle_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_position  ON User (position ) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_document_first_name ON User_document (first_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_document_second_name ON User_document (second_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_document_middle_name ON User_document (middle_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_position  ON User (position) TABLESPACE emp_index_01;
 CREATE INDEX indx_user_documet_doc_number ON user_documet (doc_number) TABLESPACE emp_index_01;
