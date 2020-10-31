@@ -51,7 +51,6 @@ create table Organization(
 create table Office(
       id number (15),
       name varchar2 (50) NOT NULL,
-      full_name varchar2 (50),
       address varchar2 (50) NOT NULL,
       phone number (15),
       is_active BOOLEAN,
@@ -59,7 +58,7 @@ create table Office(
       CONSTRAINT id_pk PRIMARY KEY (id),
       CONSTRAINT fk_id_organization FOREIGN KEY (id_organization) REFERENCES Organization(id)
 );
-
+//индексы по ПК
 CREATE INDEX indx_Document_code ON Document (code) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_document_id ON User_document (id) TABLESPACE emp_index_01;
 CREATE INDEX indx_Country_code ON Country (code) TABLESPACE emp_index_01;
@@ -67,9 +66,21 @@ CREATE INDEX indx_User_id ON User (id) TABLESPACE emp_index_01;
 CREATE INDEX indx_Organization_id ON Organization (id) TABLESPACE emp_index_01;
 CREATE INDEX indx_Office_id ON Office (id) TABLESPACE emp_index_01;
 
+//индексы по ВК
 CREATE INDEX indx_Organization_id_head_office ON Organization (id_head_office) TABLESPACE emp_index_01;
 CREATE INDEX indx_Office_id_organization ON Office (id_organization) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_office_id ON User (office_id) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_id_user_document ON User (id_user_document) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_citizenship_code ON User (citizenship_code) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_document_doc_code ON User_document (doc_code) TABLESPACE emp_index_01;
+
+//пользовательские индксы
+CREATE INDEX indx_Organization_name ON Organization (name) TABLESPACE emp_index_01;
+CREATE INDEX indx_Organization_inn ON Organization (inn) TABLESPACE emp_index_01;
+CREATE INDEX indx_Office_name ON Office (name) TABLESPACE emp_index_01;
+CREATE INDEX indx_Office_phone ON Office (phone) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_first_name ON User (first_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_second_name ON User (second_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_middle_name ON User (middle_name) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_position  ON User (position ) TABLESPACE emp_index_01;
+CREATE INDEX indx_user_documet_doc_number ON user_documet (doc_number) TABLESPACE emp_index_01;
