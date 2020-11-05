@@ -86,3 +86,15 @@ CREATE INDEX indx_User_document_second_name ON User_document (second_name) TABLE
 CREATE INDEX indx_User_document_middle_name ON User_document (middle_name) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_position  ON User (position) TABLESPACE emp_index_01;
 CREATE INDEX indx_user_documet_doc_number ON user_documet (doc_number) TABLESPACE emp_index_01;
+
+//Уникальные ограничения
+ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_inn  UNIQUE (inn );
+ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_kpp  UNIQUE (kpp);
+ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_id_head_office  UNIQUE (id_head_office);
+ALTER TABLE Country ADD CONSTRAINT UNIQUE_Country_code   UNIQUE (code );
+ALTER TABLE Country ADD CONSTRAINT UNIQUE_Country_name   UNIQUE (name);
+ALTER TABLE User ADD CONSTRAINT UNIQUE_User_id_user_document  UNIQUE (id_user_document);
+ALTER TABLE User ADD CONSTRAINT UNIQUE_User_country_id  UNIQUE (country_id);
+ALTER TABLE User_documet ADD CONSTRAINT UNIQUE_User_documet_doc_number   UNIQUE (doc_number);
+ALTER TABLE Documet ADD CONSTRAINT UNIQUE_documet_code    UNIQUE (code );
+ALTER TABLE Documet ADD CONSTRAINT UNIQUE_documet_name   UNIQUE (name);
