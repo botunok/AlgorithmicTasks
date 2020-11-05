@@ -50,37 +50,22 @@ create table Office(
       id_organization number (15)
 );
 
-//эти инстурукции выполнять после заполнения таблиц данными из папки Data.sql
-// изменения таблиц
 ALTER TABLE User_document ADD CONSTRAINT fk_User_document_doc_code FOREIGN KEY (doc_id) REFERENCES Document(id); 
 ALTER TABLE User ADD CONSTRAINT fk_User_id_user_document FOREIGN KEY (id_user_document) REFERENCES User_document(id);
 ALTER TABLE User ADD CONSTRAINT fk_User_country_id FOREIGN KEY (country_id) REFERENCES Country(id);
 ALTER TABLE User ADD CONSTRAINT fk_User_office_Id FOREIGN KEY (office_Id) REFERENCES Office(id);
 ALTER TABLE Office ADD CONSTRAINT fk_Office_id_organization FOREIGN KEY (id_organization) REFERENCES Organization(id);
 
-//индексы по ВК
 CREATE INDEX IX_Office_id_organization ON Office (id_organization);
 CREATE INDEX IX_User_office_id ON User (office_id);
 CREATE INDEX IX_User_id_user_document ON User (id_user_document);
 CREATE INDEX IX_User_country_id ON User (country_id);
 CREATE INDEX IX_User_document_doc_id ON User_document (doc_id);
 
-//индексы по уникальным полям
 CREATE UNIQUE INDEX UX_Organization_inn  ON Organization (inn);
 CREATE UNIQUE INDEX UX_Organization_kpp  ON Organization (kpp);
 CREATE UNIQUE INDEX UX_Country_code   ON Country (code );
 CREATE UNIQUE INDEX UX_Country_name   ON Country (name);
-CREATE UNIQUE INDEX UX_user_document_doc_number    ON user_document (doc_number );
 CREATE UNIQUE INDEX UX_document_code     ON document (code  );
 CREATE UNIQUE INDEX UX_document_name      ON document (name);
-
-//удаления таблиц 
-Drop table Document;
-Drop table User_document;
-Drop table Country;
-Drop table User;
-Drop table Organization;
-Drop table Office;
-
-
-
+CREATE UNIQUE INDEX UX_User_id_user_document   ON User (id_user_document );
