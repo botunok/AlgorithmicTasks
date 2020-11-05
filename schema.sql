@@ -1,17 +1,17 @@
 create table Document(
     id number (15),
     code number (15),
-    name varchar2(50) NOT NULL,
+    name varchar(50) NOT NULL,
     CONSTRAINT pk_id PRIMARY KEY (id)
 );
 
 create table User_document(
     id number (15),
     doc_id number (15) NOT NULL,
-    first_name varchar2 (50) NOT NULL,
-    second_name varchar2 (50),
-    middle_name varchar2 (50),
-    doc_number varchar2 (50) NOT NULL,
+    first_name varchar (50) NOT NULL,
+    second_name varchar (50),
+    middle_name varchar (50),
+    doc_number varchar (50) NOT NULL,
     doc_date date,
     CONSTRAINT pk_id PRIMARY KEY (id),
     CONSTRAINT fk_doc_code FOREIGN KEY (doc_code) REFERENCES Document(code)
@@ -20,14 +20,14 @@ create table User_document(
 create table Country(
     id number (15),
     code number (15),
-    name varchar2(50) NOT NULL,
+    name varchar (50) NOT NULL,
     CONSTRAINT pk_id PRIMARY KEY (id)
 );
 
 create table User(
     id number (15),
     office_id number (15) NOT NULL,
-    position varchar2 (50) NOT NULL,
+    position varchar (50) NOT NULL,
     phone number (15), 
     id_user_document number (15),
     country_id number (15),
@@ -62,32 +62,17 @@ create table Office(
 );
 
 //индексы по ВК
-CREATE INDEX indx_Organization_id_head_office ON Organization (id_head_office) TABLESPACE emp_index_01;
-CREATE INDEX indx_Office_id_organization ON Office (id_organization) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_office_id ON User (office_id) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_id_user_document ON User (id_user_document) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_country_id ON User (country_id) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_document_doc_code ON User_document (doc_code) TABLESPACE emp_index_01;
+CREATE INDEX IX_Office_id_organization ON Office (id_organization) TABLESPACE emp_index_01;
+CREATE INDEX IX_User_office_id ON User (office_id) TABLESPACE emp_index_01;
+CREATE INDEX IX_User_id_user_document ON User (id_user_document) TABLESPACE emp_index_01;
+CREATE INDEX IX_User_country_id ON User (country_id) TABLESPACE emp_index_01;
+CREATE INDEX IX_User_document_doc_code ON User_document (doc_code) TABLESPACE emp_index_01;
 
-//пользовательские индксы
-CREATE INDEX indx_Organization_name ON Organization (name) TABLESPACE emp_index_01;
-CREATE INDEX indx_Organization_inn ON Organization (inn) TABLESPACE emp_index_01;
-CREATE INDEX indx_Office_name ON Office (name) TABLESPACE emp_index_01;
-CREATE INDEX indx_Office_phone ON Office (phone) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_document_first_name ON User_document (first_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_document_second_name ON User_document (second_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_document_middle_name ON User_document (middle_name) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_position  ON User (position) TABLESPACE emp_index_01;
-CREATE INDEX indx_user_documet_doc_number ON user_documet (doc_number) TABLESPACE emp_index_01;
-
-//Уникальные ограничения
-ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_inn  UNIQUE (inn );
-ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_kpp  UNIQUE (kpp);
-ALTER TABLE Organization ADD CONSTRAINT UNIQUE_Organization_id_head_office  UNIQUE (id_head_office);
-ALTER TABLE Country ADD CONSTRAINT UNIQUE_Country_code   UNIQUE (code );
-ALTER TABLE Country ADD CONSTRAINT UNIQUE_Country_name   UNIQUE (name);
-ALTER TABLE User ADD CONSTRAINT UNIQUE_User_id_user_document  UNIQUE (id_user_document);
-ALTER TABLE User ADD CONSTRAINT UNIQUE_User_country_id  UNIQUE (country_id);
-ALTER TABLE User_documet ADD CONSTRAINT UNIQUE_User_documet_doc_number   UNIQUE (doc_number);
-ALTER TABLE Documet ADD CONSTRAINT UNIQUE_documet_code    UNIQUE (code );
-ALTER TABLE Documet ADD CONSTRAINT UNIQUE_documet_name   UNIQUE (name);
+//индексы по уникальным полям
+CREATE UNIQUE INDEX UX_Organization_inn  ON Organization (inn);
+CREATE UNIQUE INDEX UX_Organization_kpp  ON Organization (kpp);
+CREATE UNIQUE INDEX UX_Country_code   ON Country (code );
+CREATE UNIQUE INDEX UX_Country_name   ON Country (name);
+CREATE UNIQUE INDEX UX_user_documet_doc_number    ON user_documet (doc_number );
+CREATE UNIQUE INDEX UX_documet_code     ON documet (code  );
+CREATE UNIQUE INDEX UX_documet_name      ON documet (name);
