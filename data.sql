@@ -38,5 +38,5 @@ INSERT INTO office (id,name,address,phone,is_active,id_organization) VALUES (3,'
 INSERT INTO office (id,name,address,phone,is_active,id_organization) VALUES (4,'office2','address2',8499126,true,2);  
                                                   
 //заполяем organization
-INSERT INTO organization (id,name,full_name,inn,kpp,is_active,id_head_office) VALUES (1,'organization1','full organization1',123456789,123456789,true,1);
-INSERT INTO organization (id,name,full_name,inn,kpp,is_active,id_head_office) VALUES (1,'organization2','full organization2',1234567890,1234567890,true,3);  
+INSERT INTO organization (id,name,full_name,inn,kpp,is_active,address,phone) VALUES (1,'organization1','full organization1',123456789,123456789,true,'address1',8499123);
+INSERT INTO organization (id,name,full_name,inn,kpp,is_active,address,phone) VALUES (1,'organization2','full organization2',1234567890,1234567890,true,'address1',8499125);  
