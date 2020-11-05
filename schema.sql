@@ -60,13 +60,6 @@ create table Office(
       CONSTRAINT id_pk PRIMARY KEY (id),
       CONSTRAINT fk_id_organization FOREIGN KEY (id_organization) REFERENCES Organization(id)
 );
-//индексы по ПК
-CREATE INDEX indx_Document_code ON Document (code) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_document_id ON User_document (id) TABLESPACE emp_index_01;
-CREATE INDEX indx_Country_code ON Country (code) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_id ON User (id) TABLESPACE emp_index_01;
-CREATE INDEX indx_Organization_id ON Organization (id) TABLESPACE emp_index_01;
-CREATE INDEX indx_Office_id ON Office (id) TABLESPACE emp_index_01;
 
 //индексы по ВК
 CREATE INDEX indx_Organization_id_head_office ON Organization (id_head_office) TABLESPACE emp_index_01;
