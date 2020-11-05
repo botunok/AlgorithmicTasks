@@ -1,12 +1,13 @@
 create table Document(
+    id number (15),
     code number (15),
     name varchar2(50) NOT NULL,
-    CONSTRAINT pk_code PRIMARY KEY (code)
+    CONSTRAINT pk_id PRIMARY KEY (id)
 );
 
 create table User_document(
     id number (15),
-    doc_code number (15) NOT NULL,
+    doc_id number (15) NOT NULL,
     first_name varchar2 (50) NOT NULL,
     second_name varchar2 (50),
     middle_name varchar2 (50),
@@ -17,9 +18,10 @@ create table User_document(
 );
 
 create table Country(
+    id number (15),
     code number (15),
     name varchar2(50) NOT NULL,
-    CONSTRAINT pk_code PRIMARY KEY (code)
+    CONSTRAINT pk_id PRIMARY KEY (id)
 );
 
 create table User(
@@ -28,7 +30,7 @@ create table User(
     position varchar2 (50) NOT NULL,
     phone number (15), 
     id_user_document number (15),
-    citizenship_code number (15),
+    country_id number (15),
     is_identified boolean,
     CONSTRAINT pk_id PRIMARY KEY (id),
     CONSTRAINT fk_office_id FOREIGN KEY (office_id) REFERENCES office (id),
@@ -71,7 +73,7 @@ CREATE INDEX indx_Organization_id_head_office ON Organization (id_head_office) T
 CREATE INDEX indx_Office_id_organization ON Office (id_organization) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_office_id ON User (office_id) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_id_user_document ON User (id_user_document) TABLESPACE emp_index_01;
-CREATE INDEX indx_User_citizenship_code ON User (citizenship_code) TABLESPACE emp_index_01;
+CREATE INDEX indx_User_country_id ON User (country_id) TABLESPACE emp_index_01;
 CREATE INDEX indx_User_document_doc_code ON User_document (doc_code) TABLESPACE emp_index_01;
 
 //пользовательские индксы
