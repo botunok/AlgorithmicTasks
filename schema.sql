@@ -43,6 +43,8 @@ create table Organization(
       kpp number (15),
       is_active BOOLEAN,
       id_head_office number (15),
+      address varchar2 (50) NOT NULL,
+      phone number (15),
       CONSTRAINT fk_id_head_office FOREIGN KEY (id_head_office) REFERENCES Office(id)
 );
 
