@@ -34,8 +34,8 @@ INSERT INTO office (id,name,address,phone,is_active,id_organization) VALUES (3,'
 INSERT INTO office (id,name,address,phone,is_active,id_organization) VALUES (4,'office2','address2',8499126,true,2);  
 
 
-INSERT INTO user (id,office_id,position,phone,id_user_document,country_id ,is_identified) VALUES (1,1,'admin',8499,1,1,true);
-INSERT INTO user (id,office_id,position,phone,id_user_document,country_id ,is_identified) VALUES (2,1,'poet',8491,2,1,true);
-INSERT INTO user (id,office_id,position,phone,id_user_document,country_id ,is_identified) VALUES (3,2,'user',8492,3,1,true);
-INSERT INTO user (id,office_id,position,phone,id_user_document,country_id ,is_identified) VALUES (4,2,'manadger',8493,4,1,true);
-INSERT INTO user (id,office_id,position,phone,id_user_document,country_id ,is_identified) VALUES (5,3,'director',8494,5,2,true);
+INSERT INTO user (id,office_id,position,phone,country_id ,is_identified) VALUES (1,1,'admin',8499,1,true);
+INSERT INTO user (id,office_id,position,phone,country_id ,is_identified) VALUES (2,1,'poet',8491,1,true);
+INSERT INTO user (id,office_id,position,phone,country_id ,is_identified) VALUES (3,2,'user',8492,1,true);
+INSERT INTO user (id,office_id,position,phone,country_id ,is_identified) VALUES (4,2,'manadger',8493,1,true);
+INSERT INTO user (id,office_id,position,phone,country_id ,is_identified) VALUES (5,3,'director',8494,2,true);
