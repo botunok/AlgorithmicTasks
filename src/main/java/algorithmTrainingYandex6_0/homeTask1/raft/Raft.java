@@ -1,4 +1,4 @@
-package algorithmTrainingYandex6_0.homeTask1;
+package algorithmTrainingYandex6_0.homeTask1.raft;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
